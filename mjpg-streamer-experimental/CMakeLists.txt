@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+set(THIRDPARTY ${CMAKE_SOURCE_DIR}/thirdparty)
+include_directories(${THIRDPARTY}/libjpeg/include)
 project("mjpg-streamer" C)
 
 # If the user doesn't manually specify a build type, use 'Release'
@@ -49,7 +51,7 @@ set (MJPG_STREAMER_PLUGIN_INSTALL_PATH "lib/mjpg-streamer")
 # Global dependencies
 #
 
-find_library(JPEG_LIB jpeg)
+# find_library(JPEG_LIB jpeg)
 
 
 #
@@ -92,7 +94,9 @@ set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 add_executable(mjpg_streamer mjpg_streamer.c
                              utils.c)
 
-target_link_libraries(mjpg_streamer pthread dl)
+target_link_libraries(mjpg_streamer 
+-pthread 
+dl)
 install(TARGETS mjpg_streamer DESTINATION bin)
 
 #

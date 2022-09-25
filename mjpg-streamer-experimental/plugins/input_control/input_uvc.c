@@ -201,7 +201,8 @@ Return Value: always 0
 int input_stop(void)
 {
     DBG("will cancel input thread\n");
-    pthread_cancel(cam);
+    pthread_kill(cam, 0);
+    // pthread_cancel(cam);
 
     return 0;
 }

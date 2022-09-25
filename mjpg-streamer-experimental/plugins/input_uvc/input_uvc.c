@@ -100,6 +100,8 @@ void *cam_thread(void *);
 void cam_cleanup(void *);
 void help(void);
 int input_cmd(int plugin, unsigned int control, unsigned int group, int value, char *value_string);
+// extern void parse_resolution_opt(const char * optarg, int * width, int * height);
+// extern void resolutions_help(const char * padding);
 
 const char *get_name_by_tvnorm(v4l2_std_id vstd) {
 	int i;
@@ -482,7 +484,7 @@ int input_stop(int id)
     context *pctx = (context*)in->context;
     
     DBG("will cancel camera thread #%02d\n", id);
-    pthread_cancel(pctx->threadID);
+    pthread_kill(pctx->threadID, 0);
     return 0;
 }
 

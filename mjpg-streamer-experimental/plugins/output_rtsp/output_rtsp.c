@@ -321,7 +321,8 @@ Return Value: always 0
 int output_stop(int id)
 {
     DBG("will cancel worker thread\n");
-    pthread_cancel(worker);
+    pthread_kill(worker, 0);
+    // pthread_cancel(worker);
     return 0;
 }
 

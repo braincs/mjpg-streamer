@@ -180,7 +180,11 @@ int input_init(input_parameter *param, int id)
 int input_stop(int id)
 {
     DBG("will cancel input thread\n");
-    pthread_cancel(worker);
+    // #ifdef __ANDROID__
+    // pthread_
+    pthread_kill(worker,0);
+    // pthread_cancel(worker);
+    
     return 0;
 }
 

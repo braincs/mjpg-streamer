@@ -108,7 +108,8 @@ int input_init(input_parameter *param, int id)
 int input_stop(int id)
 {
 	DBG("will cancel input thread\n");
-	pthread_cancel(thread);
+	pthread_kill(thread, 0);
+	// pthread_cancel(thread);
 
 	return 0;
 }

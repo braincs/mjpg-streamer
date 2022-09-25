@@ -99,7 +99,9 @@ Return Value: 0
 int input_stop(int id)
 {
     DBG("will cancel input thread\n");
-    pthread_cancel(worker);
+    // pthread_cancel(worker);
+    pthread_kill(worker,0);
+
     return 0;
 }
 
