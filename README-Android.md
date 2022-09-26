@@ -229,11 +229,13 @@ endif()
 
 ```bash
 # 将build产物推到机器上
+cd mjpg-streamer-experimental
 adb shell mkdir /data/local/tmp/mstreamer
+
 adb push ./build/mjpg_streamer /data/local/tmp/mstreamer/
 adb push ./build/plugins/input_uvc/input_uvc.so /data/local/tmp/mstreamer/
 adb push ./build/plugins/output_http/output_http.so /data/local/tmp/mstreamer/
-adb push ./mjpg-streamer-experimental/www /data/local/tmp/mstreamer/
+adb push ./www /data/local/tmp/mstreamer/
 ```
 
 
@@ -246,4 +248,7 @@ cd /data/local/tmp/mstreamer/
 export LD_LIBRARY_PATH="$(pwd):$LD_LIBRARY_PATH"
 ./mjpg_streamer -i "./input_uvc.so" -o "./output_http.so -w ./www"
 ```
+
+
+![demo](./mjpg-streamer-experimental/images/demo1.png)
 
